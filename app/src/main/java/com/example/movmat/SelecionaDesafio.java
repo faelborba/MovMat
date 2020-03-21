@@ -31,6 +31,7 @@ public class SelecionaDesafio extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
                 intent.putExtra("nomeAluno", aluno.getNomeAluno());
+                intent.putExtra("desafio", 1);
                 startActivity(intent);
             }
         });
