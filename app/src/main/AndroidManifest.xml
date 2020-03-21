@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelecionaDesafio"></activity>
+        <activity
+            android:name=".TelaDesafio"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SelecionaDesafio"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ComSom"
             android:screenOrientation="portrait" />
