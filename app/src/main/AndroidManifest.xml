@@ -3,6 +3,7 @@
     package="com.example.movmat">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_movmat"
@@ -10,12 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TelaRelatorio"></activity>
+        <activity android:name=".ConfereResultado" />
         <activity
             android:name=".TelaDesafio"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SelecionaDesafio"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ComSom"
             android:screenOrientation="portrait" />
