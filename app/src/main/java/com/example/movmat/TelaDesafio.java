@@ -2,11 +2,13 @@ package com.example.movmat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,7 +80,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                 if (stepX > 10) {
                     stepsX++;
                     listaX = new ArrayList<>();
-                    //vibrar();// vibrar
+                    vibrar();// vibrar
                 }
                 stepX = 0;
             }
@@ -119,6 +121,12 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         conta.setText(valor1 + " + " + valor2);
         Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
 
+    }
+    private void vibrar()// cotrole de vibração
+    {
+        Vibrator rr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        long milliseconds = 30;//'30' é o tempo em milissegundos,duração da vibração.
+        rr.vibrate(milliseconds);
     }
 
 
