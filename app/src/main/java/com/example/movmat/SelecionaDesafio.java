@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class SelecionaDesafio extends AppCompatActivity {
     public Aluno aluno = new Aluno();
     public TextView botaoSoma;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,16 +23,16 @@ public class SelecionaDesafio extends AppCompatActivity {
         //recebendo dados
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            aluno.setNomeAluno(extras.getString("nomeAluno"));//inserindo dados
-            Toast.makeText(SelecionaDesafio.this, ""+ aluno.getNomeAluno(), Toast.LENGTH_SHORT).show();
+            aluno = (Aluno) getIntent().getSerializableExtra("aluno");
+            Toast.makeText(SelecionaDesafio.this, "" + aluno.getNomeAluno()+ aluno.isComVideo() + aluno.isComSom(), Toast.LENGTH_SHORT).show();
         }
         //enviando dados
         botaoSoma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
-                intent.putExtra("nomeAluno", aluno.getNomeAluno());
                 intent.putExtra("desafio", 1);
+                intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
         });

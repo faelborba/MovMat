@@ -25,14 +25,24 @@ public class ComSom extends AppCompatActivity {
         //recebendo dados
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            aluno.setNomeAluno(extras.getString("nomeAluno"));//inserindo dados
-            Toast.makeText(ComSom.this, ""+ aluno.getNomeAluno(), Toast.LENGTH_SHORT).show();
+            aluno = (Aluno) getIntent().getSerializableExtra("aluno");
+            Toast.makeText(ComSom.this, ""+ aluno.getNomeAluno() + aluno.isComVideo(), Toast.LENGTH_SHORT).show();
         }
         botaoSim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                aluno.setComSom(true);
                 Intent intent = new Intent(ComSom.this, SelecionaDesafio.class);
-                intent.putExtra("nomeAluno", aluno.getNomeAluno());
+                intent.putExtra("aluno", aluno);
+                startActivity(intent);
+            }
+        });
+        botaoNao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aluno.setComSom(false);
+                Intent intent = new Intent(ComSom.this, SelecionaDesafio.class);
+                intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
         });

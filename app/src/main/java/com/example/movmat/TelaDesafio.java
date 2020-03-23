@@ -22,7 +22,6 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     public Aluno aluno = new Aluno();
     public TextView conta, resultado;
     public int desafio = 0;
-    public int acertouSoma = 0, totalSoma = 0;
     public float atualX = (float) 0.0, atualY = (float) 0.0;
     public List<Float> listaX = new ArrayList<>();
     public List<Float> listaY = new ArrayList<>();
@@ -45,7 +44,10 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            aluno.setNomeAluno(extras.getString("nomeAluno"));//inserindo dados
+            /*aluno.setNomeAluno(extras.getString("nomeAluno"));//inserindo dados
+            aluno.setComVideo(extras.getBoolean("comVideo"));
+            aluno.setComSom(extras.getBoolean("comSom"));*/
+            aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             desafio = extras.getInt("desafio");
             resultadoInformado = extras.getInt("resultadoInformado");
         }
@@ -62,11 +64,14 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TelaDesafio.this, ConfereResultado.class);
-                intent.putExtra("nomeAluno", aluno.getNomeAluno());
-                intent.putExtra("desafio", 1);
                 intent.putExtra("resultadoCerto", resultadoCerto);
                 intent.putExtra("resultadoInformado", resultadoInformado);
                 intent.putExtra("desafio", desafio);
+                intent.putExtra("aluno", aluno);
+                /*
+                intent.putExtra("nomeAluno", aluno.getNomeAluno());
+                intent.putExtra("comVideo", aluno.isComVideo());
+                intent.putExtra("comSom", aluno.isComSom());*/
                 startActivity(intent);
             }
         });
@@ -161,6 +166,4 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         long milliseconds = 30;//'30' é o tempo em milissegundos,duração da vibração.
         rr.vibrate(milliseconds);
     }
-
-
 }

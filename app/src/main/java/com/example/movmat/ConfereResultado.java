@@ -28,15 +28,22 @@ public class ConfereResultado extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            aluno.setNomeAluno(extras.getString("nomeAluno"));//inserindo dados
+            aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             desafio = extras.getInt("desafio");
             resultadoInformado = extras.getInt("resultadoInformado");
             resultadoCerto = extras.getInt("resultadoCerto");
         }
         if(resultadoInformado == resultadoCerto){
+            if(desafio == 1){
+                aluno.setTotalSoma(1);
+                aluno.setVitoriasSoma(1);
+            }
             textoTela.setText("Parabéns você acertou!\nDeseja continuar no desafio?");
             Toast.makeText(ConfereResultado.this, "Acertou miseravi " + resultadoInformado, Toast.LENGTH_SHORT).show();
         }else{
+            if(desafio == 1){
+                aluno.setTotalSoma(1);
+            }
             textoTela.setText("Você errou!\nDeseja continuar no desafio?");
             Toast.makeText(ConfereResultado.this, "Errou miseravi, informou " + resultadoInformado +" correto era: "+ resultadoCerto, Toast.LENGTH_SHORT).show();
         }
@@ -45,8 +52,9 @@ public class ConfereResultado extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ConfereResultado.this, TelaDesafio.class);
-                intent.putExtra("resultadoInformado", 0);
+                intent.putExtra("resultadoInformado", 0); //zerando o contador
                 intent.putExtra("desafio", desafio);
+                intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
         });
@@ -55,7 +63,7 @@ public class ConfereResultado extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ConfereResultado.this, TelaRelatorio.class);
-
+                intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
         });
