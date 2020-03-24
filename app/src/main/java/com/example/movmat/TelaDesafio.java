@@ -14,11 +14,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class TelaDesafio extends AppCompatActivity implements SensorEventListener {
+public class TelaDesafio extends AppCompatActivity implements SensorEventListener, Serializable {
     public Aluno aluno = new Aluno();
     public TextView conta, resultado;
     public int desafio = 0;
@@ -44,9 +45,6 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            /*aluno.setNomeAluno(extras.getString("nomeAluno"));//inserindo dados
-            aluno.setComVideo(extras.getBoolean("comVideo"));
-            aluno.setComSom(extras.getBoolean("comSom"));*/
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             desafio = extras.getInt("desafio");
             resultadoInformado = extras.getInt("resultadoInformado");
@@ -68,10 +66,6 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                 intent.putExtra("resultadoInformado", resultadoInformado);
                 intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
-                /*
-                intent.putExtra("nomeAluno", aluno.getNomeAluno());
-                intent.putExtra("comVideo", aluno.isComVideo());
-                intent.putExtra("comSom", aluno.isComSom());*/
                 startActivity(intent);
             }
         });
@@ -79,17 +73,19 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
 
     public int geraSoma() {
         int valor1 = 0, valor2 = 0;
-        boolean continua = true;
+        //boolean continua = true;
         Random random = new Random();
-        valor1 = random.nextInt(5);
+        valor1 = random.nextInt(100);
 
-        for (int i = 0; continua; i++) {
-            valor2 = random.nextInt(5);
-            if ((valor2 + valor1) <= 10) {
-                continua = false;
+        for (int i = 0; true; i++) {
+            valor2 = random.nextInt(100);
+            if ((valor2 + valor1) <= 100) {
+                break;
             }
         }
-        conta.setText(valor1 + " + " + valor2 + " ?");
+        String palavra = valor1 + " + " + valor2 + " ?";
+        conta.setText(palavra);
+
         Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
         return (valor1 + valor2);
     }

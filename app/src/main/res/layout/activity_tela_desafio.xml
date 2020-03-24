@@ -35,10 +35,10 @@
 
     <TextView
         android:id="@+id/conta"
-        android:layout_width="226dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:gravity="center"
-        android:text="0"
+        android:text="00 + 00 ?"
         android:textColor="#FFFFFF"
         android:textSize="155px"
         app:layout_constraintBottom_toTopOf="@+id/resultado"
@@ -49,14 +49,14 @@
 
     <TextView
         android:id="@+id/resultado"
-        android:layout_width="226dp"
+        android:layout_width="0dp"
         android:layout_height="226dp"
         android:layout_marginBottom="92dp"
         android:gravity="center"
+        android:onClick="resultado"
         android:text="?"
         android:textColor="#FFFFFF"
         android:textSize="155px"
-        android:onClick="resultado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/conta"
         app:layout_constraintHorizontal_bias="0.0"

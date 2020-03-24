@@ -11,7 +11,10 @@ import android.widget.Toast;
 public class TelaRelatorio extends AppCompatActivity {
     private TextView botaoOk;
     public Aluno aluno = new Aluno();
-
+    @Override
+    public void onBackPressed() {
+        // não chame o super desse método
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
