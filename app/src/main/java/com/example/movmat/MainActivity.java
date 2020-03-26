@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 aluno.setNomeAluno(digiteNome.getText().toString());
+
                 Intent intent = new Intent(MainActivity.this, ComVisualizazacao.class);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);

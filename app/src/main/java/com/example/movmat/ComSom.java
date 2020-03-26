@@ -26,7 +26,7 @@ public class ComSom extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
-            Toast.makeText(ComSom.this, ""+ aluno.getNomeAluno() + aluno.isComVideo(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ComSom.this, ""+ aluno.getNomeAluno() + aluno.isComVideo(), Toast.LENGTH_SHORT).show();
         }
         botaoSim.setOnClickListener(new View.OnClickListener() {
             @Override

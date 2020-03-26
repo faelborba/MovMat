@@ -54,7 +54,7 @@
         android:layout_marginBottom="92dp"
         android:gravity="center"
         android:onClick="resultado"
-        android:text="?"
+        android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="155px"
         app:layout_constraintBottom_toBottomOf="parent"

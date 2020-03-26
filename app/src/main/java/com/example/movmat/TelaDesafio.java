@@ -86,7 +86,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         String palavra = valor1 + " + " + valor2 + " ?";
         conta.setText(palavra);
 
-        Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
         return (valor1 + valor2);
     }
 

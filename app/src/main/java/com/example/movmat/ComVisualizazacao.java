@@ -26,7 +26,7 @@ public class ComVisualizazacao extends AppCompatActivity  {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");// recebendo o objeto aluno
-            Toast.makeText(ComVisualizazacao.this, ""+ aluno.getNomeAluno(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ComVisualizazacao.this, ""+ aluno.getNomeAluno(), Toast.LENGTH_SHORT).show();
         }
 
         botaoSim.setOnClickListener(new View.OnClickListener() {

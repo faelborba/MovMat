@@ -24,7 +24,7 @@ public class SelecionaDesafio extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
-            Toast.makeText(SelecionaDesafio.this, "" + aluno.getNomeAluno()+ aluno.isComVideo() + aluno.isComSom(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(SelecionaDesafio.this, "" + aluno.getNomeAluno()+ aluno.isComVideo() + aluno.isComSom(), Toast.LENGTH_SHORT).show();
         }
         //enviando dados
         botaoSoma.setOnClickListener(new View.OnClickListener() {

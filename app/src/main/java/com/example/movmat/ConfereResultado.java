@@ -39,13 +39,13 @@ public class ConfereResultado extends AppCompatActivity {
                 aluno.setVitoriasSoma(1);
             }
             textoTela.setText("Parabéns você acertou!\nDeseja continuar no desafio?");
-            Toast.makeText(ConfereResultado.this, "Acertou miseravi " + resultadoInformado, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ConfereResultado.this, "Acertou miseravi " + resultadoInformado, Toast.LENGTH_SHORT).show();
         }else{
             if(desafio == 1){
                 aluno.setTotalSoma(1);
             }
             textoTela.setText("Você errou!\nDeseja continuar no desafio?");
-            Toast.makeText(ConfereResultado.this, "Errou miseravi, informou " + resultadoInformado +" correto era: "+ resultadoCerto, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ConfereResultado.this, "Errou miseravi, informou " + resultadoInformado +" correto era: "+ resultadoCerto, Toast.LENGTH_SHORT).show();
         }
 
         botaoSim.setOnClickListener(new View.OnClickListener() {

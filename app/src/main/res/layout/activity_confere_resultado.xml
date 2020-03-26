@@ -35,6 +35,7 @@
         android:text="Sim"
         android:textColor="#FFFFFF"
         android:textSize="111px"
+        android:background="@drawable/selector_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtResultado" />
@@ -47,6 +48,7 @@
         android:layout_marginLeft="16dp"
         android:gravity="center"
         android:text="Não"
+        android:background="@drawable/selector_button"
         android:textColor="#FFFFFF"
         android:textSize="111px"
         app:layout_constraintBottom_toBottomOf="parent"
