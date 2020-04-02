@@ -52,6 +52,14 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
 
         if (desafio == 1) {
             resultadoCerto = geraSoma();
+        }else if(desafio == 2){
+            resultadoCerto = geraSubtracao();
+        }else if(desafio == 3){
+            resultadoCerto = geraMultiplicacao();
+        }else if(desafio == 4){
+            resultadoCerto = geraDivisao();
+        }else if(desafio == 5){
+            resultadoCerto = geraAleatorio();
         }
 
         //capturando resultado com movimentos
@@ -69,6 +77,59 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                 startActivity(intent);
             }
         });
+    }
+    public int geraAleatorio(){
+        int result = 0;
+    }
+    public int geraDivisao(){
+        int valor1 = 0, valor2 = 0;
+        //boolean continua = true;
+        Random random = new Random();
+        valor1 = random.nextInt(101);
+        for (int i = 0; true; i++) {
+            valor2 = random.nextInt(valor1 + 1);
+            if (valor2 == 0) continue;
+            if (valor1%valor2 != 0) continue;
+            if ((valor2 / valor1) <= 100) {
+                break;
+            }
+        }
+        String palavra = valor1 + " ÷ " + valor2 + " ?";
+        conta.setText(palavra);
+        return (valor1 / valor2);
+    }
+
+    public int geraMultiplicacao(){
+        int valor1 = 0, valor2 = 0;
+        //boolean continua = true;
+        Random random = new Random();
+        valor1 = random.nextInt(101);
+
+        for (int i = 0; true; i++) {
+            valor2 = random.nextInt(101);
+            if ((valor2 * valor1) <= 100) {
+                break;
+            }
+        }
+        String palavra = valor1 + " × " + valor2 + " ?";
+        conta.setText(palavra);
+
+        //Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
+        return (valor1 * valor2);
+    }
+
+    public int geraSubtracao(){
+        int valor1 = 0, valor2 = 0;
+        //boolean continua = true;
+        Random random = new Random();
+        valor1 = random.nextInt(101);
+        valor2 = random.nextInt(valor1);
+
+        String palavra = valor1 + " - " + valor2 + " ?";
+        conta.setText(palavra);
+
+        //Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
+        return (valor1 - valor2);
     }
 
     public int geraSoma() {
@@ -97,13 +158,34 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             float x = event.values[0];
             float y = event.values[1];
 
-            atualX = (float) x * x;
-            atualY = (float) y * y;
+            atualX = (float) x;
+            atualY = (float) y;
             listaX.add(atualX);
             listaY.add(atualY);
 
             //tratando os valores do eixo x -- Dezenas
-            if (listaX.size() > 40) {
+            if (atualX > 1) {
+                stepX++;
+            }
+            if (stepX >10){
+                stepsX = stepsX +10;
+                vibrar();// vibrar
+                stepX = 0;
+            }
+
+            if (atualY > 1) {
+                stepY++;
+            }
+            if (stepY >10){
+                stepsY++;
+                vibrar();// vibrar
+                stepY = 0;
+            }
+
+            //resultado.setText(String.valueOf(stepsX + stepsY));
+
+            //tratando os valores do eixo x -- Dezenas
+/*            if (listaX.size() > 40) {
                 listaX.remove(0);
                 for (Float f : listaX) {
                     if (Math.abs(atualX - f) > 9.0) {
@@ -111,16 +193,16 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     }
                 }
                 if (stepX > 9) {
-                    stepsX = stepsX + 10;
+                    stepsX = stepsX + 10; // contando eixo -- dezenas
                     listaX = new ArrayList<>();
                     vibrar();// vibrar
                 }
                 stepX = 0;
             }
-            resultado.setText(String.valueOf(stepsX + stepsY));
+            resultado.setText(String.valueOf(stepsX + stepsY));*/
 
             //tratando os valores do eixo y -- unidades
-            if (listaY.size() > 40) {
+            /*if (listaY.size() > 40) {
                 listaY.remove(0);
                 for (Float f : listaY) {
                     if (Math.abs(atualY - f) > 9.0) {
@@ -128,12 +210,12 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     }
                 }
                 if (stepY > 9) {
-                    stepsY++;
+                    stepsY++;// contando eixo -- unidade
                     listaY = new ArrayList<>();
                     vibrar();
                 }
                 stepY = 0;
-            }
+            }*/
             resultado.setText(String.valueOf(stepsX + stepsY));
             resultadoInformado = stepsX + stepsY;
         }
@@ -159,7 +241,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     private void vibrar()// cotrole de vibração
     {
         Vibrator rr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long milliseconds = 30;//'30' é o tempo em milissegundos,duração da vibração.
+        long milliseconds = 60;//'30' é o tempo em milissegundos,duração da vibração.
         rr.vibrate(milliseconds);
     }
 }
