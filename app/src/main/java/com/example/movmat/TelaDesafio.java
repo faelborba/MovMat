@@ -28,6 +28,8 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     public List<Float> listaY = new ArrayList<>();
     public int stepX = 0, stepsX = 0, stepY = 0, stepsY = 0;
 
+    public int semente = 101;
+
     private SensorManager sensorManager;
     private Sensor sensor;
     private int resultadoInformado = 0, resultadoCerto = 0;
@@ -79,20 +81,31 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         });
     }
     public int geraAleatorio(){
-        int result = 0;
+        int  sorteiaDesafio = 0;
+        Random random = new Random();
+
+        sorteiaDesafio = (random.nextInt(4) + 1);
+        if (sorteiaDesafio == 1) {
+            resultadoCerto = geraSoma();
+        }else if(sorteiaDesafio == 2){
+            resultadoCerto = geraSubtracao();
+        }else if(sorteiaDesafio == 3){
+            resultadoCerto = geraMultiplicacao();
+        }else if(sorteiaDesafio == 4){
+            resultadoCerto = geraDivisao();
+        }
+
+        return resultadoCerto;
     }
     public int geraDivisao(){
         int valor1 = 0, valor2 = 0;
         //boolean continua = true;
         Random random = new Random();
-        valor1 = random.nextInt(101);
+        valor1 = random.nextInt(semente);
         for (int i = 0; true; i++) {
             valor2 = random.nextInt(valor1 + 1);
             if (valor2 == 0) continue;
-            if (valor1%valor2 != 0) continue;
-            if ((valor2 / valor1) <= 100) {
-                break;
-            }
+            if (valor1%valor2 == 0) break;
         }
         String palavra = valor1 + " ÷ " + valor2 + " ?";
         conta.setText(palavra);
@@ -103,10 +116,10 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         int valor1 = 0, valor2 = 0;
         //boolean continua = true;
         Random random = new Random();
-        valor1 = random.nextInt(101);
+        valor1 = random.nextInt(semente);
 
         for (int i = 0; true; i++) {
-            valor2 = random.nextInt(101);
+            valor2 = random.nextInt(semente);
             if ((valor2 * valor1) <= 100) {
                 break;
             }
@@ -122,7 +135,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         int valor1 = 0, valor2 = 0;
         //boolean continua = true;
         Random random = new Random();
-        valor1 = random.nextInt(101);
+        valor1 = random.nextInt(semente);
         valor2 = random.nextInt(valor1);
 
         String palavra = valor1 + " - " + valor2 + " ?";
@@ -136,10 +149,10 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         int valor1 = 0, valor2 = 0;
         //boolean continua = true;
         Random random = new Random();
-        valor1 = random.nextInt(100);
+        valor1 = random.nextInt(semente);
 
         for (int i = 0; true; i++) {
-            valor2 = random.nextInt(100);
+            valor2 = random.nextInt(semente);
             if ((valor2 + valor1) <= 100) {
                 break;
             }

@@ -71,7 +71,7 @@ public class SelecionaDesafio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
-                intent.putExtra("desafio", 2);
+                intent.putExtra("desafio", 5);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }

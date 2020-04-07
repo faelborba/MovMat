@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ConfereResultado extends AppCompatActivity {
+import java.io.Serializable;
+
+public class ConfereResultado extends AppCompatActivity implements Serializable {
     public Aluno aluno = new Aluno();
     public int desafio = 0;
     public int resultadoInformado = 0, resultadoCerto = 0;
