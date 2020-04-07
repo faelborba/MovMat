@@ -8,11 +8,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
-
-public class ConfereResultado extends AppCompatActivity implements Serializable {
+public class ConfereResultado extends AppCompatActivity {
     public Aluno aluno = new Aluno();
-    public int desafio = 0;
+    public Desafio desafio = new Desafio();
+
     public int resultadoInformado = 0, resultadoCerto = 0;
 
     private TextView textoTela;
@@ -31,30 +30,31 @@ public class ConfereResultado extends AppCompatActivity implements Serializable 
 
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
-            desafio = extras.getInt("desafio");
-            resultadoInformado = extras.getInt("resultadoInformado");
-            resultadoCerto = extras.getInt("resultadoCerto");
+            desafio = (Desafio) getIntent().getSerializableExtra("desafio");
         }
-        if(resultadoInformado == resultadoCerto){
-            if(desafio == 1){
+        if(desafio.getResultadoInformado() == desafio.getResultadoCerto()){
+            textoTela.setText("Parabéns você acertou!\nDeseja continuar no desafio?");
+
+            if(desafio.getDesafio() == 1){// adicionando os resultados aos valores conforme desafio.
                 aluno.setTotalSoma(1);
                 aluno.setVitoriasSoma(1);
             }
-            textoTela.setText("Parabéns você acertou!\nDeseja continuar no desafio?");
+
             //Toast.makeText(ConfereResultado.this, "Acertou miseravi " + resultadoInformado, Toast.LENGTH_SHORT).show();
         }else{
-            if(desafio == 1){
+            textoTela.setText("Você errou!\nDeseja continuar no desafio?");
+
+            if(desafio.getDesafio() == 1){
                 aluno.setTotalSoma(1);
             }
-            textoTela.setText("Você errou!\nDeseja continuar no desafio?");
+
             //Toast.makeText(ConfereResultado.this, "Errou miseravi, informou " + resultadoInformado +" correto era: "+ resultadoCerto, Toast.LENGTH_SHORT).show();
         }
-
+        desafio.setResultadoInformado(0);
         botaoSim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ConfereResultado.this, TelaDesafio.class);
-                intent.putExtra("resultadoInformado", 0); //zerando o contador
                 intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);

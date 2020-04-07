@@ -14,15 +14,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class TelaDesafio extends AppCompatActivity implements SensorEventListener, Serializable {
+public class TelaDesafio extends AppCompatActivity implements SensorEventListener {
     public Aluno aluno = new Aluno();
+    public Desafio desafio = new Desafio();
     public TextView conta, resultado;
-    public int desafio = 0;
+
     public float atualX = (float) 0.0, atualY = (float) 0.0;
     public List<Float> listaX = new ArrayList<>();
     public List<Float> listaY = new ArrayList<>();
@@ -48,19 +48,18 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
 
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
-            desafio = extras.getInt("desafio");
-            resultadoInformado = extras.getInt("resultadoInformado");
+            desafio = (Desafio) getIntent().getSerializableExtra("desafio");
         }
 
-        if (desafio == 1) {
+        if (desafio.getDesafio() == 1) {
             resultadoCerto = geraSoma();
-        }else if(desafio == 2){
+        }else if(desafio.getDesafio() == 2){
             resultadoCerto = geraSubtracao();
-        }else if(desafio == 3){
+        }else if(desafio.getDesafio() == 3){
             resultadoCerto = geraMultiplicacao();
-        }else if(desafio == 4){
+        }else if(desafio.getDesafio() == 4){
             resultadoCerto = geraDivisao();
-        }else if(desafio == 5){
+        }else if(desafio.getDesafio() == 5){
             resultadoCerto = geraAleatorio();
         }
 
@@ -71,9 +70,9 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         resultado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                desafio.setResultadoCerto(resultadoCerto);
+                desafio.setResultadoInformado(resultadoInformado);
                 Intent intent = new Intent(TelaDesafio.this, ConfereResultado.class);
-                intent.putExtra("resultadoCerto", resultadoCerto);
-                intent.putExtra("resultadoInformado", resultadoInformado);
                 intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);

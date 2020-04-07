@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 public class SelecionaDesafio extends AppCompatActivity {
     public Aluno aluno = new Aluno();
+    public Desafio desafio = new Desafio();
     public TextView botaoSoma, botaoSubtrai, botaoMultiplica, botaoDivide, botaoAleatorio;
 
     @Override
@@ -34,8 +37,9 @@ public class SelecionaDesafio extends AppCompatActivity {
         botaoSoma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                desafio.setDesafio(1);
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
-                intent.putExtra("desafio", 1);
+                intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
@@ -43,8 +47,9 @@ public class SelecionaDesafio extends AppCompatActivity {
         botaoSubtrai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                desafio.setDesafio(2);
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
-                intent.putExtra("desafio", 2);
+                intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
@@ -52,8 +57,9 @@ public class SelecionaDesafio extends AppCompatActivity {
         botaoMultiplica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                desafio.setDesafio(3);
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
-                intent.putExtra("desafio", 3);
+                intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
@@ -61,8 +67,9 @@ public class SelecionaDesafio extends AppCompatActivity {
         botaoDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                desafio.setDesafio(4);
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
-                intent.putExtra("desafio", 4);
+                intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
@@ -70,8 +77,9 @@ public class SelecionaDesafio extends AppCompatActivity {
         botaoAleatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                desafio.setDesafio(5);
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
-                intent.putExtra("desafio", 5);
+                intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
                 startActivity(intent);
             }
