@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class SelecionaDesafio extends AppCompatActivity {
     public Aluno aluno = new Aluno();
     public Desafio desafio = new Desafio();
-    public TextView botaoSoma, botaoSubtrai, botaoMultiplica, botaoDivide, botaoAleatorio;
+    public TextView botaoSoma, botaoSubtrai, botaoMultiplica, botaoDivide, botaoAleatorio, botaoContar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class SelecionaDesafio extends AppCompatActivity {
         botaoMultiplica = (TextView) findViewById(R.id.botaoMultiplica);
         botaoDivide = (TextView) findViewById(R.id.botaoDvide);
         botaoAleatorio = (TextView) findViewById(R.id.botaoAleatorio);
+        botaoContar = (TextView) findViewById(R.id.botaoContar);
 
         //recebendo dados
         Bundle extras = getIntent().getExtras();
@@ -78,6 +79,16 @@ public class SelecionaDesafio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 desafio.setDesafio(5);
+                Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
+                intent.putExtra("desafio", desafio);
+                intent.putExtra("aluno", aluno);
+                startActivity(intent);
+            }
+        });
+        botaoContar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                desafio.setDesafio(6);
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
                 intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);

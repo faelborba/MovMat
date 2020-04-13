@@ -9,11 +9,16 @@
     tools:context=".TelaDesafio">
 
     <TextView
-        android:id="@+id/movMat4"
-        android:layout_width="226dp"
-        android:layout_height="71dp"
+        android:id="@+id/conta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="MovMat"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center"
+        android:text="Desafio quanto é \n 00 + 00 ?"
         android:textColor="#FFFFFF"
         android:textSize="155px"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,45 +26,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/movMat5"
-        android:layout_width="256dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="36dp"
-        android:text="Quanto é"
-        android:textColor="#FFFFFF"
-        android:textSize="155px"
-        app:layout_constraintEnd_toEndOf="@+id/movMat4"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="@+id/movMat4"
-        app:layout_constraintTop_toBottomOf="@+id/movMat4" />
-
-    <TextView
-        android:id="@+id/conta"
-        android:layout_width="0dp"
-        android:layout_height="71dp"
-        android:gravity="center"
-        android:text="00 + 00 ?"
-        android:textColor="#FFFFFF"
-        android:textSize="155px"
-        app:layout_constraintBottom_toTopOf="@+id/resultado"
-        app:layout_constraintEnd_toEndOf="@+id/movMat5"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/movMat5"
-        app:layout_constraintTop_toBottomOf="@+id/movMat5" />
-
-    <TextView
         android:id="@+id/resultado"
         android:layout_width="0dp"
-        android:layout_height="226dp"
-        android:layout_marginBottom="92dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:onClick="resultado"
         android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="155px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/conta"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/conta" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/conta" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
