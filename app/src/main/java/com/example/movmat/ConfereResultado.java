@@ -32,22 +32,50 @@ public class ConfereResultado extends AppCompatActivity {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             desafio = (Desafio) getIntent().getSerializableExtra("desafio");
         }
-        if(desafio.getResultadoInformado() == desafio.getResultadoCerto()){
+        if(desafio.getResultadoInformado() == desafio.getResultadoCerto()){// acertou
             textoTela.setText("Parabéns você acertou!\nDeseja continuar no desafio?");
-
-            if(desafio.getDesafio() == 1){// adicionando os resultados aos valores conforme desafio.
-                aluno.setTotalSoma(1);
-                aluno.setVitoriasSoma(1);
+            // adicionando os resultados aos valores conforme desafio.
+            switch(desafio.getDesafio()){
+                case 1:
+                    aluno.setTotalSoma(1);
+                    aluno.setVitoriasSoma(1);
+                    break;
+                case 2:
+                    aluno.setTotalSubtracao(1);
+                    aluno.setVitoriasSubtracao(1);
+                    break;
+                case 3:
+                    aluno.setTotalMultiplicacao(1);
+                    aluno.setVitoriasMultiplicacao(1);
+                    break;
+                case 4:
+                    aluno.setTotalDivisao(1);
+                    aluno.setVitoriasDivisao(1);
+                default :
+                    break;
             }
-
             //Toast.makeText(ConfereResultado.this, "Acertou miseravi " + resultadoInformado, Toast.LENGTH_SHORT).show();
-        }else{
+        }else{//errou
             textoTela.setText("Você errou!\nDeseja continuar no desafio?");
-
-            if(desafio.getDesafio() == 1){
-                aluno.setTotalSoma(1);
+            switch(desafio.getDesafio()){
+                case 1:
+                    aluno.setTotalSoma(1);
+                    aluno.setVitoriasSoma(1);
+                    break;
+                case 2:
+                    aluno.setTotalSubtracao(1);
+                    aluno.setVitoriasSubtracao(1);
+                    break;
+                case 3:
+                    aluno.setTotalMultiplicacao(1);
+                    aluno.setVitoriasMultiplicacao(1);
+                    break;
+                case 4:
+                    aluno.setTotalDivisao(1);
+                    aluno.setVitoriasDivisao(1);
+                default :
+                    break;
             }
-
             //Toast.makeText(ConfereResultado.this, "Errou miseravi, informou " + resultadoInformado +" correto era: "+ resultadoCerto, Toast.LENGTH_SHORT).show();
         }
         desafio.setResultadoInformado(0);
