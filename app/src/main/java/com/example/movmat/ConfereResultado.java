@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ConfereResultado extends AppCompatActivity {
     public Aluno aluno = new Aluno();
@@ -51,10 +50,14 @@ public class ConfereResultado extends AppCompatActivity {
                 case 4:
                     aluno.setTotalDivisao(1);
                     aluno.setVitoriasDivisao(1);
+                    break;
+                case 6:
+                    aluno.setTotalContagem(1);
+                    aluno.setVitoriaContagem(1);
+                    break;
                 default :
                     break;
             }
-            //Toast.makeText(ConfereResultado.this, "Acertou miseravi " + resultadoInformado, Toast.LENGTH_SHORT).show();
         }else{//errou
             textoTela.setText("Você errou!\nDeseja continuar no desafio?");
             switch(desafio.getDesafio()){
@@ -69,10 +72,13 @@ public class ConfereResultado extends AppCompatActivity {
                     break;
                 case 4:
                     aluno.setTotalDivisao(1);
+                    break;
+                case 6:
+                    aluno.setTotalContagem(1);
+                    break;
                 default :
                     break;
             }
-            //Toast.makeText(ConfereResultado.this, "Errou miseravi, informou " + resultadoInformado +" correto era: "+ resultadoCerto, Toast.LENGTH_SHORT).show();
         }
         desafio.setResultadoInformado(0);
         botaoSim.setOnClickListener(new View.OnClickListener() {

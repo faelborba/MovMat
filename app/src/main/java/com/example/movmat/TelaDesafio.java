@@ -206,8 +206,6 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                 stepY = 0;
             }*/
 
-            //resultado.setText(String.valueOf(stepsX + stepsY));
-
             //tratando os valores do eixo x -- Dezenas
             if (listaX.size() > 40) {
                 listaX.remove(0);
@@ -222,10 +220,8 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     vibrar();// vibrar
                 }
                 stepX = 0;
-                stepY = 0;
+                stepY = 0;// zerando o step y para evitar problema de movimento errado
             }
-            //resultado.setText(String.valueOf(stepsX + stepsY));
-
             //tratando os valores do eixo y -- unidades
             if (listaY.size() > 40) {
                 listaY.remove(0);
@@ -240,7 +236,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     vibrar();
                 }
                 stepY = 0;
-                stepX = 0;
+                stepX = 0;// zerando o step x para evitar problema de movimento errado
             }
             resultado.setText(String.valueOf(stepsX + stepsY));
             resultadoInformado = stepsX + stepsY;

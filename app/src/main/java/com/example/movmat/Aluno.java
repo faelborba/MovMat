@@ -4,10 +4,26 @@ import java.io.Serializable;
 
 public class Aluno implements Serializable {
     public String nomeAluno = "";
-    public int vitoriasSoma = 0, vitoriasSubtracao = 0, vitoriasMultiplicacao = 0, vitoriasDivisao = 0;
-    public int totalSoma = 0, totalSubtracao = 0, totalMultiplicacao = 0, totalDivisao = 0;
+    public int vitoriasSoma = 0, vitoriasSubtracao = 0, vitoriasMultiplicacao = 0, vitoriasDivisao = 0, vitoriaContagem = 0;
+    public int totalSoma = 0, totalSubtracao = 0, totalMultiplicacao = 0, totalDivisao = 0, totalContagem = 0;
     public boolean comVideo;
     public boolean comSom;
+
+    public int getVitoriaContagem() {
+        return vitoriaContagem;
+    }
+
+    public void setVitoriaContagem(int vitoriaContagem) {
+        this.vitoriaContagem = vitoriaContagem + this.vitoriaContagem;
+    }
+
+    public int getTotalContagem() {
+        return totalContagem;
+    }
+
+    public void setTotalContagem(int totalContagem) {
+        this.totalContagem = totalContagem + this.totalContagem;
+    }
 
     public int getTotalSoma() {
         return totalSoma;
@@ -22,7 +38,7 @@ public class Aluno implements Serializable {
     }
 
     public void setTotalSubtracao(int totalSubtracao) {
-        this.totalSubtracao = totalSubtracao;
+        this.totalSubtracao = totalSubtracao + this.totalSubtracao;
     }
 
     public int getTotalMultiplicacao() {
@@ -30,7 +46,7 @@ public class Aluno implements Serializable {
     }
 
     public void setTotalMultiplicacao(int totalMultiplicacao) {
-        this.totalMultiplicacao = totalMultiplicacao;
+        this.totalMultiplicacao = totalMultiplicacao + this.totalMultiplicacao;
     }
 
     public int getTotalDivisao() {
@@ -38,7 +54,7 @@ public class Aluno implements Serializable {
     }
 
     public void setTotalDivisao(int totalDivisao) {
-        this.totalDivisao = totalDivisao;
+        this.totalDivisao = totalDivisao + this.totalDivisao;
     }
 
     public int getVitoriasSoma() {
@@ -54,7 +70,7 @@ public class Aluno implements Serializable {
     }
 
     public void setVitoriasSubtracao(int vitoriasSubtracao) {
-        this.vitoriasSubtracao = vitoriasSubtracao;
+        this.vitoriasSubtracao = vitoriasSubtracao + this.vitoriasSubtracao;
     }
 
     public int getVitoriasMultiplicacao() {
@@ -62,7 +78,7 @@ public class Aluno implements Serializable {
     }
 
     public void setVitoriasMultiplicacao(int vitoriasMultiplicacao) {
-        this.vitoriasMultiplicacao = vitoriasMultiplicacao;
+        this.vitoriasMultiplicacao = vitoriasMultiplicacao + this.vitoriasMultiplicacao;
     }
 
     public int getVitoriasDivisao() {
@@ -70,7 +86,7 @@ public class Aluno implements Serializable {
     }
 
     public void setVitoriasDivisao(int vitoriasDivisao) {
-        this.vitoriasDivisao = vitoriasDivisao;
+        this.vitoriasDivisao = vitoriasDivisao + this.vitoriasDivisao;
     }
 
     public boolean isComSom() {
