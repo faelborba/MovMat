@@ -60,19 +60,15 @@ public class ConfereResultado extends AppCompatActivity {
             switch(desafio.getDesafio()){
                 case 1:
                     aluno.setTotalSoma(1);
-                    aluno.setVitoriasSoma(1);
                     break;
                 case 2:
                     aluno.setTotalSubtracao(1);
-                    aluno.setVitoriasSubtracao(1);
                     break;
                 case 3:
                     aluno.setTotalMultiplicacao(1);
-                    aluno.setVitoriasMultiplicacao(1);
                     break;
                 case 4:
                     aluno.setTotalDivisao(1);
-                    aluno.setVitoriasDivisao(1);
                 default :
                     break;
             }
