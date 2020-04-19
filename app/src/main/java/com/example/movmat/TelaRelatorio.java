@@ -20,6 +20,9 @@ public class TelaRelatorio extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // não chame o super desse método
+        Intent intent = new Intent(TelaRelatorio.this, SelecionaDesafio.class);
+        intent.putExtra("aluno", aluno);
+        startActivity(intent);
     }
 
     @Override
@@ -77,4 +80,5 @@ public class TelaRelatorio extends AppCompatActivity {
             }
         });
     }
+
 }
