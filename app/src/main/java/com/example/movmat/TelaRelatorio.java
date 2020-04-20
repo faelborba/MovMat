@@ -23,6 +23,7 @@ public class TelaRelatorio extends AppCompatActivity {
         Intent intent = new Intent(TelaRelatorio.this, SelecionaDesafio.class);
         intent.putExtra("aluno", aluno);
         startActivity(intent);
+        super.onBackPressed();
     }
 
     @Override
@@ -68,7 +69,6 @@ public class TelaRelatorio extends AppCompatActivity {
         contagemAcertou.setText("" + aluno.getVitoriaContagem());
         contagemErrou.setText("" + (aluno.getTotalContagem() - aluno.getVitoriaContagem()));
         contagemTotal.setText("" + aluno.getTotalContagem());
-
 
         botaoOk = (TextView) findViewById(R.id.botaoOk);
         botaoOk.setOnClickListener(new View.OnClickListener() {

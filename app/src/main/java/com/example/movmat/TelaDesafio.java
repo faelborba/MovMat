@@ -8,11 +8,11 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,22 +22,22 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     public Aluno aluno = new Aluno();
     public Desafio desafio = new Desafio();
     public TextView conta, resultado;
-
     public float atualX = (float) 0.0, atualY = (float) 0.0;
     public List<Float> listaX = new ArrayList<>();
     public List<Float> listaY = new ArrayList<>();
     public int stepX = 0, stepsX = 0, stepY = 0, stepsY = 0;
-
     public int semente = 101;
-
     private SensorManager sensorManager;
     private Sensor sensor;
     private int resultadoInformado = 0, resultadoCerto = 0;
+
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_desafio);
+
 
         //capturando itens da tela
         conta = (TextView) findViewById(R.id.conta);
@@ -82,7 +82,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         });
     }
 
-    public int geraContagem(){
+    public int geraContagem() {
         int valor = 0;
         Random random = new Random();
         valor = random.nextInt(semente);
@@ -127,10 +127,10 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         int valor1 = 0, valor2 = 0;
         //boolean continua = true;
         Random random = new Random();
-        valor1 = random.nextInt(semente);
+        valor1 = random.nextInt(11);
 
         for (int i = 0; true; i++) {
-            valor2 = random.nextInt(semente);
+            valor2 = random.nextInt(11);
             if ((valor2 * valor1) <= 100) {
                 break;
             }
@@ -218,6 +218,11 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     stepsX = stepsX + 10; // contando eixo -- dezenas
                     listaX = new ArrayList<>();
                     vibrar();// vibrar
+
+                    resultado.setText(String.valueOf(stepsX + stepsY));
+                    resultadoInformado = stepsX + stepsY;
+
+                    if(aluno.isComSom()) tocaSom(resultadoInformado);
                 }
                 stepX = 0;
                 stepY = 0;// zerando o step y para evitar problema de movimento errado
@@ -234,12 +239,55 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     stepsY++;// contando eixo -- unidade
                     listaY = new ArrayList<>();
                     vibrar();
+
+                    resultado.setText(String.valueOf(stepsX + stepsY));
+                    resultadoInformado = stepsX + stepsY;
+
+                    if(aluno.isComSom()) tocaSom(resultadoInformado);
                 }
                 stepY = 0;
                 stepX = 0;// zerando o step x para evitar problema de movimento errado
             }
-            resultado.setText(String.valueOf(stepsX + stepsY));
-            resultadoInformado = stepsX + stepsY;
+
+        }
+    }
+
+    protected void tocaSom(int resultado) {
+       
+        if (resultado <= 10){
+            switch (resultado){
+                case 1:
+                    mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+                    mediaPlayer.start();
+                    break;
+            }
+        }else if(resultado <= 20){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
+        }else if(resultado <= 30){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
+        }else if(resultado <= 40){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
+        }else if(resultado <= 50){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
+        }else if(resultado <= 60){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
+        }else if(resultado <= 70){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
+        }else if(resultado <= 80){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
+        }else if(resultado <= 90){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
+        }else if(resultado <= 100){
+            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
+            mediaPlayer.start();
         }
     }
 
