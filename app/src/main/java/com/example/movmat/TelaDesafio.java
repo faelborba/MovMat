@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -49,6 +50,10 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             desafio = (Desafio) getIntent().getSerializableExtra("desafio");
+        }
+
+        if(!aluno.isComVideo()){
+            resultado.setTextColor(Color.BLACK);
         }
 
         if (desafio.getDesafio() == 1) {
