@@ -31,14 +31,14 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     private Sensor sensor;
     private int resultadoInformado = 0, resultadoCerto = 0;
 
-    MediaPlayer mediaPlayer;
+    ArrayList<MediaPlayer> mediaPlayer = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_desafio);
 
-
+        alimentaSom();
         //capturando itens da tela
         conta = (TextView) findViewById(R.id.conta);
         resultado = (TextView) findViewById(R.id.resultado);
@@ -222,7 +222,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     resultado.setText(String.valueOf(stepsX + stepsY));
                     resultadoInformado = stepsX + stepsY;
 
-                    if(aluno.isComSom()) tocaSom(resultadoInformado);
+                    if (aluno.isComSom()) tocaSom(resultadoInformado);
                 }
                 stepX = 0;
                 stepY = 0;// zerando o step y para evitar problema de movimento errado
@@ -243,7 +243,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     resultado.setText(String.valueOf(stepsX + stepsY));
                     resultadoInformado = stepsX + stepsY;
 
-                    if(aluno.isComSom()) tocaSom(resultadoInformado);
+                    if (aluno.isComSom()) tocaSom(resultadoInformado);
                 }
                 stepY = 0;
                 stepX = 0;// zerando o step x para evitar problema de movimento errado
@@ -252,43 +252,115 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         }
     }
 
-    protected void tocaSom(int resultado) {
-       
-        if (resultado <= 10){
-            switch (resultado){
-                case 1:
-                    mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-                    mediaPlayer.start();
-                    break;
+    protected void alimentaSom() {
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.zero));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.um));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.dois));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.tres));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.quatro));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.cinco));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.seis));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.sete));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.oito));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.nove));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.dez));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.onze));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.doze));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.treze));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.quatorze));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.quinze));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.dezeseis));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.dezesete));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.dezoito));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.dezenove));
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.vinte));// 20
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.trinta));//21
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.quarenta));//22
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.cinquenta));//23
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.sessenta));//24
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.setenta));//25
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.oitenta));//26
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.noventa));//27
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.cem));//28
+        mediaPlayer.add(MediaPlayer.create(TelaDesafio.this, R.raw.eee));//29
+
+    }
+
+    protected void tocaSom(final int resultado) {
+        new Thread() {
+            public void run() {
+                if (resultado < 20) {
+                    mediaPlayer.get(resultado).start();
+                } else if (resultado < 30) {
+                    mediaPlayer.get(20).start();
+                    if (resultado != 20) {
+                        while (mediaPlayer.get(20).isPlaying()) ;// loop para segurar o som
+                        mediaPlayer.get(29).start();
+                        while (mediaPlayer.get(29).isPlaying()) ;
+                        mediaPlayer.get(resultado - 20).start();
+                    }
+                } else if (resultado < 40) {
+                    mediaPlayer.get(21).start();
+                    if (resultado != 30) {
+                        while (mediaPlayer.get(21).isPlaying()) ;// loop para segurar o som
+                        mediaPlayer.get(29).start();
+                        while (mediaPlayer.get(29).isPlaying()) ;
+                        mediaPlayer.get(resultado - 30).start();
+                    }
+                } else if (resultado < 50) {
+                    mediaPlayer.get(22).start();
+                    if (resultado != 40) {
+                        while (mediaPlayer.get(22).isPlaying()) ;// loop para segurar o som
+                        mediaPlayer.get(29).start();
+                        while (mediaPlayer.get(29).isPlaying()) ;
+                        mediaPlayer.get(resultado - 40).start();
+                    }
+                } else if (resultado < 60) {
+                    mediaPlayer.get(23).start();
+                    if (resultado != 50) {
+                        while (mediaPlayer.get(23).isPlaying()) ;// loop para segurar o som
+                        mediaPlayer.get(29).start();
+                        while (mediaPlayer.get(29).isPlaying()) ;
+                        mediaPlayer.get(resultado - 50).start();
+                    }
+                } else if (resultado < 70) {
+                    mediaPlayer.get(24).start();
+                    if (resultado != 60) {
+                        while (mediaPlayer.get(24).isPlaying()) ;// loop para segurar o som
+                        mediaPlayer.get(29).start();
+                        while (mediaPlayer.get(29).isPlaying()) ;
+                        mediaPlayer.get(resultado - 60).start();
+                    }
+                } else if (resultado < 80) {
+                    mediaPlayer.get(25).start();
+                    if (resultado != 70) {
+                        while (mediaPlayer.get(25).isPlaying()) ;// loop para segurar o som
+                        mediaPlayer.get(29).start();
+                        while (mediaPlayer.get(29).isPlaying()) ;
+                        mediaPlayer.get(resultado - 70).start();
+                    }
+                } else if (resultado < 90) {
+                    mediaPlayer.get(26).start();
+                    if (resultado != 80) {
+                        while (mediaPlayer.get(26).isPlaying()) ;// loop para segurar o som
+                        mediaPlayer.get(29).start();
+                        while (mediaPlayer.get(29).isPlaying()) ;
+                        mediaPlayer.get(resultado - 80).start();
+                    }
+                }else if (resultado < 100) {
+                    mediaPlayer.get(27).start();
+                    if (resultado != 90) {
+                        while (mediaPlayer.get(27).isPlaying()) ;// loop para segurar o som
+                        mediaPlayer.get(29).start();
+                        while (mediaPlayer.get(29).isPlaying()) ;
+                        mediaPlayer.get(resultado - 90).start();
+                    }
+                }else if(resultado == 100){
+                    mediaPlayer.get(28).start();
+                }
             }
-        }else if(resultado <= 20){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }else if(resultado <= 30){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }else if(resultado <= 40){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }else if(resultado <= 50){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }else if(resultado <= 60){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }else if(resultado <= 70){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }else if(resultado <= 80){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }else if(resultado <= 90){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }else if(resultado <= 100){
-            mediaPlayer = MediaPlayer.create(this, R.raw.alex_play);
-            mediaPlayer.start();
-        }
+        }.start();
+
     }
 
     @Override
