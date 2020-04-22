@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText digiteNome;
     private Button botaoOk;
 
-    public Aluno aluno = null;
+    public Aluno aluno, alunoNovo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            aluno = (Aluno) getIntent().getSerializableExtra("aluno");
+            alunoNovo = (Aluno) getIntent().getSerializableExtra("aluno");
+            aluno = new Aluno();
+            aluno.setNomeAluno(alunoNovo.getNomeAluno());
             //Toast.makeText(SelecionaDesafio.this, "" + aluno.getNomeAluno()+ aluno.isComVideo() + aluno.isComSom(), Toast.LENGTH_SHORT).show();
         }
 
