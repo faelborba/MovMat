@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText digiteNome;
     private Button botaoOk;
 
-    public Aluno aluno = new Aluno();
+    public Aluno aluno = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,17 @@ public class MainActivity extends AppCompatActivity {
 
         digiteNome = (EditText) findViewById(R.id.digiteNome);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            aluno = (Aluno) getIntent().getSerializableExtra("aluno");
+            //Toast.makeText(SelecionaDesafio.this, "" + aluno.getNomeAluno()+ aluno.isComVideo() + aluno.isComSom(), Toast.LENGTH_SHORT).show();
+        }
+
+        if (aluno == null) {
+            aluno = new Aluno();
+        } else {
+            digiteNome.setText(aluno.getNomeAluno());
+        }
         //recebendo dados e executando a próxima tela
         botaoOk = (Button) findViewById(R.id.botaoOk);
         botaoOk.setOnClickListener(new View.OnClickListener() {
