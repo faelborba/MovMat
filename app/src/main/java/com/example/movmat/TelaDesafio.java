@@ -52,7 +52,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             desafio = (Desafio) getIntent().getSerializableExtra("desafio");
         }
 
-        if(!aluno.isComVideo()){
+        if (!aluno.isComVideo()) {
             resultado.setTextColor(Color.BLACK);
         }
 
@@ -352,7 +352,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                         while (mediaPlayer.get(29).isPlaying()) ;
                         mediaPlayer.get(resultado - 80).start();
                     }
-                }else if (resultado < 100) {
+                } else if (resultado < 100) {
                     mediaPlayer.get(27).start();
                     if (resultado != 90) {
                         while (mediaPlayer.get(27).isPlaying()) ;// loop para segurar o som
@@ -360,7 +360,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                         while (mediaPlayer.get(29).isPlaying()) ;
                         mediaPlayer.get(resultado - 90).start();
                     }
-                }else if(resultado == 100){
+                } else if (resultado == 100) {
                     mediaPlayer.get(28).start();
                 }
             }

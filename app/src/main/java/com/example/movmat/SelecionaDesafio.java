@@ -16,6 +16,15 @@ public class SelecionaDesafio extends AppCompatActivity {
     public TextView botaoSoma, botaoSubtrai, botaoMultiplica, botaoDivide, botaoAleatorio, botaoContar;
 
     @Override
+    public void onBackPressed() {
+        // não chame o super desse método
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("aluno", aluno);
+        startActivity(intent);
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleciona_desafio);
