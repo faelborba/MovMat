@@ -11,7 +11,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private EditText digiteNome;
-    private Button botaoOk;
+    private Button botaoOk, botaoInstrucoes;
+    public String descricao = "Aqui vai as instruções. bla bla bla bla bla bla bla... olá até mais. lalalalala :-p... bla bla bla 234 123";
 
     public Aluno aluno, alunoNovo = null;
 
@@ -31,12 +32,23 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "" + aluno.getNomeAluno(), Toast.LENGTH_SHORT).show();
             }
         }
-
         if (aluno == null) {
             aluno = new Aluno();
         } else {
             digiteNome.setText(aluno.getNomeAluno());
         }
+
+        botaoInstrucoes = (Button) findViewById(R.id.botaoInstrucoes);
+        botaoInstrucoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Ajuda.class);
+                intent.putExtra("descricao", descricao);
+                intent.putExtra("tela", 1);
+                startActivity(intent);
+            }
+        });
+
         //recebendo dados e executando a próxima tela
         botaoOk = (Button) findViewById(R.id.botaoOk);
 
@@ -48,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, ComVisualizazacao.class);
                     intent.putExtra("aluno", aluno);
                     startActivity(intent);
-                }else{
+                } else {
                     Toast.makeText(MainActivity.this, "Por favor digite um nome válido.", Toast.LENGTH_SHORT).show();
                 }
             }

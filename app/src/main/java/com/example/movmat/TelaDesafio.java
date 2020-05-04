@@ -40,7 +40,6 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_desafio);
 
-        alimentaSom();
         //capturando itens da tela
         conta = (TextView) findViewById(R.id.conta);
         resultado = (TextView) findViewById(R.id.resultado);
