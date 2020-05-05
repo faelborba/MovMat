@@ -1,8 +1,10 @@
 package com.example.movmat;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +14,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private EditText digiteNome;
     private Button botaoOk, botaoInstrucoes;
-    public String descricao = "Aqui vai as instruções. bla bla bla bla bla bla bla... olá até mais. lalalalala :-p... bla bla bla 234 123";
 
     public Aluno aluno, alunoNovo = null;
 
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Ajuda.class);
-                intent.putExtra("descricao", descricao);
+                //intent.putExtra("descricao", descricao);
                 intent.putExtra("tela", 1);
                 startActivity(intent);
             }
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 aluno.setNomeAluno(digiteNome.getText().toString());
                 if (!aluno.getNomeAluno().equals("Digite o nome")) {
-                    Intent intent = new Intent(MainActivity.this, ComVisualizazacao.class);
+                    Intent intent = new Intent(MainActivity.this, TelaConfiguracao.class);
                     intent.putExtra("aluno", aluno);
                     startActivity(intent);
                 } else {
@@ -66,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+    }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public void onBackPressed() {// Sair da aplicação se clicar em voltar
+        finishAffinity();
     }
 }

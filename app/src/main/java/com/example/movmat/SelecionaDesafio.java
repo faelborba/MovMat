@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ public class SelecionaDesafio extends AppCompatActivity {
     public Aluno aluno = new Aluno();
     public Desafio desafio = new Desafio();
     public TextView botaoSoma, botaoSubtrai, botaoMultiplica, botaoDivide, botaoAleatorio, botaoContar;
+    private Button botaoIstrucao;
 
     @Override
     public void onBackPressed() {
@@ -30,6 +32,7 @@ public class SelecionaDesafio extends AppCompatActivity {
         setContentView(R.layout.activity_seleciona_desafio);
 
         //pegando botões
+        botaoIstrucao = (Button) findViewById(R.id.botaoInstrucoes3);
         botaoSoma = (TextView) findViewById(R.id.botaoSoma);
         botaoSubtrai = (TextView) findViewById(R.id.botaoSubtrai);
         botaoMultiplica = (TextView) findViewById(R.id.botaoMultiplica);
@@ -43,6 +46,16 @@ public class SelecionaDesafio extends AppCompatActivity {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             //Toast.makeText(SelecionaDesafio.this, "" + aluno.getNomeAluno()+ aluno.isComVideo() + aluno.isComSom(), Toast.LENGTH_SHORT).show();
         }
+        //tela de instruções
+        botaoIstrucao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelecionaDesafio.this, Ajuda.class);
+                intent.putExtra("aluno", aluno);
+                intent.putExtra("tela", 3);
+                startActivity(intent);
+            }
+        });
         //enviando dados
         botaoSoma.setOnClickListener(new View.OnClickListener() {
             @Override

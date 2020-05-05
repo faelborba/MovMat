@@ -15,6 +15,7 @@ public class ConfereResultado extends AppCompatActivity {
 
     private TextView textoTela;
     private TextView botaoNao, botaoSim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class ConfereResultado extends AppCompatActivity {
 
         textoTela = (TextView) findViewById(R.id.txtResultado);
         botaoNao = (TextView) findViewById(R.id.botaoNao);
-        botaoSim = (TextView) findViewById(R.id.botaoSim);
+        botaoSim = (TextView) findViewById(R.id.botaoOk);
 
         //recebendo dados
         Bundle extras = getIntent().getExtras();
@@ -31,10 +32,10 @@ public class ConfereResultado extends AppCompatActivity {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             desafio = (Desafio) getIntent().getSerializableExtra("desafio");
         }
-        if(desafio.getResultadoInformado() == desafio.getResultadoCerto()){// acertou
-            textoTela.setText("Parabéns você acertou!\nDeseja continuar no desafio?");
+        if (desafio.getResultadoInformado() == desafio.getResultadoCerto()) {// acertou
+            textoTela.setText("Parabéns " + aluno.getNomeAluno() + " você acertou!\nDeseja continuar nesse desafio desafio?");
             // adicionando os resultados aos valores conforme desafio.
-            switch(desafio.getDesafio()){
+            switch (desafio.getDesafio()) {
                 case 1:
                     aluno.setTotalSoma(1);
                     aluno.setVitoriasSoma(1);
@@ -55,12 +56,12 @@ public class ConfereResultado extends AppCompatActivity {
                     aluno.setTotalContagem(1);
                     aluno.setVitoriaContagem(1);
                     break;
-                default :
+                default:
                     break;
             }
-        }else{//errou
-            textoTela.setText("Você errou!\nDeseja continuar no desafio?");
-            switch(desafio.getDesafio()){
+        } else {//errou
+            textoTela.setText("Que pena " + aluno.getNomeAluno() + " Você errou!\nDeseja continuar no desafio?");
+            switch (desafio.getDesafio()) {
                 case 1:
                     aluno.setTotalSoma(1);
                     break;
@@ -76,7 +77,7 @@ public class ConfereResultado extends AppCompatActivity {
                 case 6:
                     aluno.setTotalContagem(1);
                     break;
-                default :
+                default:
                     break;
             }
         }

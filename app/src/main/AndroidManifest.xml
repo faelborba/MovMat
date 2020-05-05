@@ -25,10 +25,7 @@
             android:name=".SelecionaDesafio"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ComSom"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ComVisualizazacao"
+            android:name=".TelaConfiguracao"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
