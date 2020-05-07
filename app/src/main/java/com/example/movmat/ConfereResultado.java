@@ -33,7 +33,7 @@ public class ConfereResultado extends AppCompatActivity {
             desafio = (Desafio) getIntent().getSerializableExtra("desafio");
         }
         if (desafio.getResultadoInformado() == desafio.getResultadoCerto()) {// acertou
-            textoTela.setText("Parabéns " + aluno.getNomeAluno() + " você acertou!\nDeseja continuar nesse desafio desafio?");
+            textoTela.setText("Parabéns " + aluno.getNomeAluno() + " você acertou!\nDeseja continuar nessa atividade?");
             // adicionando os resultados aos valores conforme desafio.
             switch (desafio.getDesafio()) {
                 case 1:
@@ -60,7 +60,7 @@ public class ConfereResultado extends AppCompatActivity {
                     break;
             }
         } else {//errou
-            textoTela.setText("Que pena " + aluno.getNomeAluno() + " Você errou!\nDeseja continuar no desafio?");
+            textoTela.setText("Que pena " + aluno.getNomeAluno() + " Você errou!\nDeseja continuar nessa atividade?");
             switch (desafio.getDesafio()) {
                 case 1:
                     aluno.setTotalSoma(1);

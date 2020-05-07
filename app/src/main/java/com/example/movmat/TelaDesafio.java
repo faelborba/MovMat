@@ -90,12 +90,18 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             }
         });
     }
-
+    protected void tocaSom(final int resultado) {
+        new Thread() {
+            public void run() {
+                Toast.makeText(TelaDesafio.this, "" + resultado, Toast.LENGTH_SHORT).show();
+            }
+        }.run();
+    }
     public int geraContagem() {
         int valor = 0;
         Random random = new Random();
         valor = random.nextInt(semente);
-        conta.setText("Desafio\nconte até\n" + valor);
+        conta.setText("Atividade\nconte até\n" + valor);
         return valor;
     }
 
@@ -127,7 +133,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             if (valor2 == 0) continue;
             if (valor1 % valor2 == 0) break;
         }
-        String palavra = "Desafio\nquanto é\n" + valor1 + " ÷ " + valor2 + " ?";
+        String palavra = aluno.getNomeAluno() + " resolva a atividade\nquanto é\n" + valor1 + " ÷ " + valor2 + " ?";
         conta.setText(palavra);
         return (valor1 / valor2);
     }
@@ -144,7 +150,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                 break;
             }
         }
-        String palavra = "Desafio\nquanto é\n" + valor1 + " × " + valor2 + " ?";
+        String palavra = aluno.getNomeAluno() + " resolva a atividade\nquanto é\n" + valor1 + " × " + valor2 + " ?";
         conta.setText(palavra);
 
         //Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
@@ -158,7 +164,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         valor1 = random.nextInt(semente);
         valor2 = random.nextInt(valor1);
 
-        String palavra = "Desafio\nquanto é\n" + valor1 + " - " + valor2 + " ?";
+        String palavra = aluno.getNomeAluno() + " resolva a atividade\nquanto é\n" + valor1 + " - " + valor2 + " ?";
         conta.setText(palavra);
 
         //Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
@@ -177,7 +183,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                 break;
             }
         }
-        String palavra = "Desafio\nquanto é\n" + valor1 + " + " + valor2 + " ?";
+        String palavra = aluno.getNomeAluno() + " resolva a atividade\nquanto é\n" + valor1 + " + " + valor2 + " ?";
         conta.setText(palavra);
 
         //Toast.makeText(TelaDesafio.this, " " + valor1 + " + " + valor2 + " = " + (valor1 + valor2), Toast.LENGTH_SHORT).show();
@@ -212,7 +218,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     resultado.setText(String.valueOf(stepsX + stepsY));
                     resultadoInformado = stepsX + stepsY;
 
-                    if (aluno.isComSom()) Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
+                    if (aluno.isComSom()) tocaSom(resultadoInformado);//Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
                 }
                 stepX = 0;
                 stepY = 0;// zerando o step y para evitar problema de movimento errado
@@ -233,7 +239,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     resultado.setText(String.valueOf(stepsX + stepsY));
                     resultadoInformado = stepsX + stepsY;
 
-                    if (aluno.isComSom())  Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
+                    if (aluno.isComSom())  tocaSom(resultadoInformado);//Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
                 }
                 stepY = 0;
                 stepX = 0;// zerando o step x para evitar problema de movimento errado

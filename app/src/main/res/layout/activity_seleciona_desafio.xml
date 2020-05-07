@@ -42,7 +42,7 @@
 
     <TextView
         android:id="@+id/botaoSoma"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -60,7 +60,7 @@
 
     <TextView
         android:id="@+id/botaoMultiplica"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -77,7 +77,7 @@
 
     <TextView
         android:id="@+id/botaoDvide"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -94,7 +94,7 @@
 
     <TextView
         android:id="@+id/botaoAleatorio"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -111,7 +111,7 @@
 
     <TextView
         android:id="@+id/botaoContar"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -132,7 +132,7 @@
 
     <TextView
         android:id="@+id/botaoSubtrai"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"

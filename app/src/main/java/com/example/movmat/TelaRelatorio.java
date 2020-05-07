@@ -50,8 +50,6 @@ public class TelaRelatorio extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
-            /*Toast.makeText(this, "" + aluno.getNomeAluno() + " " + aluno.isComVideo() + aluno.isComSom(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Vitoria Soma " + aluno.vitoriasSoma + "\n Total de desafios soma" + aluno.getTotalSoma() + "\n Erros Soma" + (aluno.getTotalSoma() - aluno.getVitoriasSoma()), Toast.LENGTH_SHORT).show();*/
         }
 
         somaAcertou.setText("" + aluno.getVitoriasSoma());

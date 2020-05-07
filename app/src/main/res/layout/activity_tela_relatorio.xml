@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_cor"
                 android:padding="5dp"
-                android:text="Desafio"
+                android:text="Atividade"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
