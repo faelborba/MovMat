@@ -9,19 +9,21 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="382dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="Selecione a Atividade"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="@+id/botaoInstrucoes3"
-        app:layout_constraintStart_toStartOf="@+id/botaoInstrucoes3"
+        app:layout_constraintBottom_toTopOf="@+id/botaoInstrucoes3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -29,88 +31,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/selector_button"
-        android:padding="5dp"
+        android:padding="10dp"
         android:text="instruções"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/botaoSoma"
-        app:layout_constraintEnd_toEndOf="@+id/botaoSoma"
-        app:layout_constraintStart_toStartOf="@+id/botaoSoma"
+        app:layout_constraintBottom_toTopOf="@+id/botaoCalcular"
+        app:layout_constraintEnd_toEndOf="@+id/botaoCalcular"
+        app:layout_constraintStart_toStartOf="@+id/botaoCalcular"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/botaoSoma"
+        android:id="@+id/botaoCalcular"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/selector_button"
         android:gravity="center"
         android:onClick="botaoSoma"
         android:shadowColor="#FFFFFF"
-        android:text="1. Somar"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/botaoSubtrai"
-        app:layout_constraintEnd_toEndOf="@+id/botaoSubtrai"
-        app:layout_constraintStart_toStartOf="@+id/botaoSubtrai"
-        app:layout_constraintTop_toBottomOf="@+id/botaoInstrucoes3" />
-
-    <TextView
-        android:id="@+id/botaoMultiplica"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/selector_button"
-        android:gravity="center|center_horizontal"
-        android:shadowColor="#FFFFFF"
-        android:text="3. Multiplicar"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/botaoDvide"
-        app:layout_constraintEnd_toEndOf="@+id/botaoDvide"
-        app:layout_constraintStart_toStartOf="@+id/botaoDvide"
-        app:layout_constraintTop_toBottomOf="@+id/botaoSubtrai" />
-
-    <TextView
-        android:id="@+id/botaoDvide"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/selector_button"
-        android:gravity="center|center_horizontal"
-        android:shadowColor="#FFFFFF"
-        android:text="4. Dividir"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/botaoAleatorio"
-        app:layout_constraintEnd_toEndOf="@+id/botaoAleatorio"
-        app:layout_constraintStart_toStartOf="@+id/botaoAleatorio"
-        app:layout_constraintTop_toBottomOf="@+id/botaoMultiplica" />
-
-    <TextView
-        android:id="@+id/botaoAleatorio"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/selector_button"
-        android:gravity="center|center_horizontal"
-        android:shadowColor="#FFFFFF"
-        android:text="5. Aleatório"
+        android:text="1. Calcular"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/botaoContar"
         app:layout_constraintEnd_toEndOf="@+id/botaoContar"
         app:layout_constraintStart_toStartOf="@+id/botaoContar"
-        app:layout_constraintTop_toBottomOf="@+id/botaoDvide" />
+        app:layout_constraintTop_toBottomOf="@+id/botaoInstrucoes3" />
 
     <TextView
-        android:id="@+id/botaoContar"
+        android:id="@+id/botaoAleatorio"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -122,16 +73,17 @@
         android:background="@drawable/selector_button"
         android:gravity="center|center_horizontal"
         android:shadowColor="#FFFFFF"
-        android:text="6. Contar"
+        android:text="3. Desafio"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoAleatorio" />
+        app:layout_constraintTop_toBottomOf="@+id/botaoContar" />
 
     <TextView
-        android:id="@+id/botaoSubtrai"
+        android:id="@+id/botaoContar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -139,12 +91,12 @@
         android:background="@drawable/selector_button"
         android:gravity="center|center_horizontal"
         android:shadowColor="#FFFFFF"
-        android:text="2. Subtrair"
+        android:text="2. Contar"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/botaoMultiplica"
-        app:layout_constraintEnd_toEndOf="@+id/botaoMultiplica"
-        app:layout_constraintStart_toStartOf="@+id/botaoMultiplica"
-        app:layout_constraintTop_toBottomOf="@+id/botaoSoma" />
+        app:layout_constraintBottom_toTopOf="@+id/botaoAleatorio"
+        app:layout_constraintEnd_toEndOf="@+id/botaoAleatorio"
+        app:layout_constraintStart_toStartOf="@+id/botaoAleatorio"
+        app:layout_constraintTop_toBottomOf="@+id/botaoCalcular" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
