@@ -11,8 +11,6 @@ public class ConfereResultado extends AppCompatActivity {
     public Aluno aluno = new Aluno();
     public Desafio desafio = new Desafio();
 
-    public int resultadoInformado = 0, resultadoCerto = 0;
-
     private TextView textoTela;
     private TextView botaoNao, botaoSim;
 
@@ -27,7 +25,6 @@ public class ConfereResultado extends AppCompatActivity {
 
         //recebendo dados
         Bundle extras = getIntent().getExtras();
-
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             desafio = (Desafio) getIntent().getSerializableExtra("desafio");
@@ -35,53 +32,38 @@ public class ConfereResultado extends AppCompatActivity {
         if (desafio.getResultadoInformado() == desafio.getResultadoCerto()) {// acertou
             textoTela.setText("Parabéns " + aluno.getNomeAluno() + " você acertou!\nDeseja continuar nessa atividade?");
             // adicionando os resultados aos valores conforme desafio.
-            switch (desafio.getDesafio()) {
-                case 1:
-                    aluno.setTotalSoma(1);
-                    aluno.setVitoriasSoma(1);
-                    break;
-                case 2:
-                    aluno.setTotalSubtracao(1);
-                    aluno.setVitoriasSubtracao(1);
-                    break;
-                case 3:
-                    aluno.setTotalMultiplicacao(1);
-                    aluno.setVitoriasMultiplicacao(1);
-                    break;
-                case 4:
-                    aluno.setTotalDivisao(1);
-                    aluno.setVitoriasDivisao(1);
-                    break;
-                case 6:
-                    aluno.setTotalContagem(1);
-                    aluno.setVitoriaContagem(1);
-                    break;
-                default:
-                    break;
+            if (desafio.getDesafio() == 1 || desafio.getSorteiaDesafio() == 1) {
+                aluno.setTotalSoma(1);
+                aluno.setVitoriasSoma(1);
+            } else if (desafio.getDesafio() == 2 || desafio.getSorteiaDesafio() == 2) {
+                aluno.setTotalSubtracao(1);
+                aluno.setVitoriasSubtracao(1);
+            } else if (desafio.getDesafio() == 3 || desafio.getSorteiaDesafio() == 3) {
+                aluno.setTotalMultiplicacao(1);
+                aluno.setVitoriasMultiplicacao(1);
+            } else if (desafio.getDesafio() == 4 || desafio.getSorteiaDesafio() == 4) {
+                aluno.setTotalDivisao(1);
+                aluno.setVitoriasDivisao(1);
+            } else if (desafio.getDesafio() == 5 || desafio.getSorteiaDesafio() == 5) {
+                aluno.setTotalContagem(1);
+                aluno.setVitoriaContagem(1);
             }
         } else {//errou
             textoTela.setText("Que pena " + aluno.getNomeAluno() + " Você errou!\nDeseja continuar nessa atividade?");
-            switch (desafio.getDesafio()) {
-                case 1:
-                    aluno.setTotalSoma(1);
-                    break;
-                case 2:
-                    aluno.setTotalSubtracao(1);
-                    break;
-                case 3:
-                    aluno.setTotalMultiplicacao(1);
-                    break;
-                case 4:
-                    aluno.setTotalDivisao(1);
-                    break;
-                case 6:
-                    aluno.setTotalContagem(1);
-                    break;
-                default:
-                    break;
+            if (desafio.getDesafio() == 1 || desafio.getSorteiaDesafio() == 1) {
+                aluno.setTotalSoma(1);
+            } else if (desafio.getDesafio() == 2 || desafio.getSorteiaDesafio() == 2) {
+                aluno.setTotalSubtracao(1);
+            } else if (desafio.getDesafio() == 3 || desafio.getSorteiaDesafio() == 3) {
+                aluno.setTotalMultiplicacao(1);
+            } else if (desafio.getDesafio() == 4 || desafio.getSorteiaDesafio() == 4) {
+                aluno.setTotalDivisao(1);
+            } else if (desafio.getDesafio() == 5 || desafio.getSorteiaDesafio() == 5) {
+                aluno.setTotalContagem(1);
             }
         }
-        desafio.setResultadoInformado(0);
+        desafio.setResultadoInformado(0);//zerando
+        desafio.setSorteiaDesafio(0);//zerando
         botaoSim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +73,6 @@ public class ConfereResultado extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         botaoNao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -68,7 +68,7 @@ public class SelecionaDesafio extends AppCompatActivity {
         botaoAleatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                desafio.setDesafio(5);
+                desafio.setDesafio(6);
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
                 intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);
@@ -78,7 +78,7 @@ public class SelecionaDesafio extends AppCompatActivity {
         botaoContar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                desafio.setDesafio(6);
+                desafio.setDesafio(5);
                 Intent intent = new Intent(SelecionaDesafio.this, TelaDesafio.class);
                 intent.putExtra("desafio", desafio);
                 intent.putExtra("aluno", aluno);

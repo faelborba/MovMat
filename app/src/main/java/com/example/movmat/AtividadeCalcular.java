@@ -12,6 +12,13 @@ public class AtividadeCalcular extends AppCompatActivity {
     public Desafio desafio = new Desafio();
     public TextView botaoSoma, botaoSubtrai, botaoMultiplica, botaoDivide, botaoAleatorio, botaoContar;
 
+    public void onBackPressed() {
+        // não chame o super desse método
+        Intent intent = new Intent(AtividadeCalcular.this, SelecionaDesafio.class);
+        intent.putExtra("aluno", aluno);
+        startActivity(intent);
+        super.onBackPressed();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

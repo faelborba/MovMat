@@ -29,7 +29,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     public List<Float> listaX = new ArrayList<>();
     public List<Float> listaY = new ArrayList<>();
     public int stepX = 0, stepsX = 0, stepY = 0, stepsY = 0;
-    public int semente = 101;
+    public int semente = 101, sorteiaDesafio = 0;
     private SensorManager sensorManager;
     private Sensor sensor;
     private int resultadoInformado = 0, resultadoCerto = 0;
@@ -68,9 +68,9 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             resultadoCerto = geraMultiplicacao();
         } else if (desafio.getDesafio() == 4) {
             resultadoCerto = geraDivisao();
-        } else if (desafio.getDesafio() == 5) {
+        } else if (desafio.getDesafio() == 6) {//aqui gera o aleatorio
             resultadoCerto = geraAleatorio();
-        } else if (desafio.getDesafio() == 6) {
+        } else if (desafio.getDesafio() == 5) {
             resultadoCerto = geraContagem();
         }
 
@@ -90,6 +90,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             }
         });
     }
+
     protected void tocaSom(final int resultado) {
         new Thread() {
             public void run() {
@@ -97,6 +98,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             }
         }.run();
     }
+
     public int geraContagem() {
         int valor = 0;
         Random random = new Random();
@@ -106,10 +108,9 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     }
 
     public int geraAleatorio() {
-        int sorteiaDesafio = 0;
         Random random = new Random();
-
-        sorteiaDesafio = (random.nextInt(4) + 1);
+        sorteiaDesafio = (random.nextInt(5) + 1);
+        desafio.setSorteiaDesafio(sorteiaDesafio);
         if (sorteiaDesafio == 1) {
             resultadoCerto = geraSoma();
         } else if (sorteiaDesafio == 2) {
@@ -118,8 +119,9 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             resultadoCerto = geraMultiplicacao();
         } else if (sorteiaDesafio == 4) {
             resultadoCerto = geraDivisao();
+        } else if (sorteiaDesafio == 5) {
+            resultadoCerto = geraContagem();
         }
-
         return resultadoCerto;
     }
 
@@ -210,7 +212,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                         stepX++;
                     }
                 }
-                if (stepX > 5) {
+                if (stepX > 4) {
                     stepsX = stepsX + 10; // contando eixo -- dezenas
                     listaX = new ArrayList<>();
                     vibrar();// vibrar
@@ -218,7 +220,8 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     resultado.setText(String.valueOf(stepsX + stepsY));
                     resultadoInformado = stepsX + stepsY;
 
-                    if (aluno.isComSom()) tocaSom(resultadoInformado);//Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
+                    if (aluno.isComSom())
+                        tocaSom(resultadoInformado);//Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
                 }
                 stepX = 0;
                 stepY = 0;// zerando o step y para evitar problema de movimento errado
@@ -231,7 +234,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                         stepY++;
                     }
                 }
-                if (stepY > 5) {
+                if (stepY > 4) {
                     stepsY++;// contando eixo -- unidade
                     listaY = new ArrayList<>();
                     vibrar();
@@ -239,7 +242,8 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     resultado.setText(String.valueOf(stepsX + stepsY));
                     resultadoInformado = stepsX + stepsY;
 
-                    if (aluno.isComSom())  tocaSom(resultadoInformado);//Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
+                    if (aluno.isComSom())
+                        tocaSom(resultadoInformado);//Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
                 }
                 stepY = 0;
                 stepX = 0;// zerando o step x para evitar problema de movimento errado
