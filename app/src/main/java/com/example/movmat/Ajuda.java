@@ -39,10 +39,10 @@ public class Ajuda extends AppCompatActivity {
                     "A segunda opção você define se vai querer a exibição dos números ao mover o aparelho para resolver as atividades.\n" +
                     "Para isso volte, marque as opções desejadas e clique em ok.\n";
         } else if (tela == 3) {
-            descricao1 = "Legal " + aluno.getNomeAluno() + ", agora você chegou na parte onde pode escolher a atividade que deseja praticar. " +
-                    "São 6 atividades, 4 delas são compostas pelas quatro operações de matemática básica, somar, subtrair, multiplicar e dividir. " +
-                    "Tem também 1 atividade aleatória que sorteia uma das anteriores e você pode  receber um desafio surpresa. " +
-                    "Por último uma atividade para você treinar a forma de contar.\n" +
+            descricao1 = "Legal " + aluno.getNomeAluno() + ", agora você pode escolher a atividade que deseja praticar. " +
+                    "São 3 atividades, a primeira é calcular composta pelas quatro operações de matemática básica, somar, subtrair, multiplicar e dividir. " +
+                    "A segunda é uma atividade para você treinar a forma de contar.\n" +
+                    "Por último uma atividade aleatória que sorteia uma das anteriores e você receberá um desafio surpresa." +
                     "Para responder as atividades você deve efetuar um semi-giro para um dos lados contando unidade ou um semi-giro para cima contando dezenas.\n" +
                     "Vamos lá?\n" +
                     "Para iniciar volte e escolha uma das atividades.\n";

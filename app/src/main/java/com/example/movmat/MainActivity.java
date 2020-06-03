@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
             digiteNome.setText(aluno.getNomeAluno());
         }
 
+        //marcando texto da caixa como selecionado para apagar rápido
+        digiteNome.setSelectAllOnFocus(true);
+        digiteNome.selectAll();
+
         botaoInstrucoes = (Button) findViewById(R.id.botaoInstrucoes);
         botaoInstrucoes.setOnClickListener(new View.OnClickListener() {
             @Override
