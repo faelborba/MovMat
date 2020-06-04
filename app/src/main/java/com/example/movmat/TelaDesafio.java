@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     private SensorManager sensorManager;
     private Sensor sensor;
     private int resultadoInformado = 0, resultadoCerto = 0;
+    public Button botaoZerar;
 
     ArrayList<MediaPlayer> mediaPlayer = new ArrayList<>();
 
@@ -47,15 +49,16 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         //capturando itens da tela
         conta = (TextView) findViewById(R.id.conta);
         resultado = (TextView) findViewById(R.id.resultado);
+        botaoZerar = (Button) findViewById(R.id.botaoZerar);
 
         //recebendo dados
         Bundle extras = getIntent().getExtras();
-
         if (extras != null) {
             aluno = (Aluno) getIntent().getSerializableExtra("aluno");
             desafio = (Desafio) getIntent().getSerializableExtra("desafio");
         }
 
+        //deixando o resultado preto para nao aparecer quando selecionado.
         if (!aluno.isComVideo()) {
             resultado.setTextColor(Color.BLACK);
         }
@@ -78,6 +81,18 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED);
 
+        //zerar resultado informado
+        botaoZerar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultadoInformado = 0;
+                resultado.setText(String.valueOf(resultadoInformado));
+                if (aluno.isComSom())
+                    tocaSom(resultadoInformado);
+            }
+        });
+
+        //aplicar resultado
         resultado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,9 +232,12 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     listaX = new ArrayList<>();
                     vibrar();// vibrar
 
-                    resultado.setText(String.valueOf(stepsX + stepsY));
-                    resultadoInformado = stepsX + stepsY;
+                    resultadoInformado = resultadoInformado +  stepsX + stepsY;
+                    resultado.setText(String.valueOf(resultadoInformado));
+                    stepsX = 0;
+                    stepsY = 0;
 
+                    // se foi com som aciona a função que pronuncia o número na hora do moviento.
                     if (aluno.isComSom())
                         tocaSom(resultadoInformado);//Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
                 }
@@ -239,9 +257,12 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     listaY = new ArrayList<>();
                     vibrar();
 
-                    resultado.setText(String.valueOf(stepsX + stepsY));
-                    resultadoInformado = stepsX + stepsY;
+                    resultadoInformado = resultadoInformado +  stepsX + stepsY;
+                    resultado.setText(String.valueOf(resultadoInformado));
+                    stepsX = 0;
+                    stepsY = 0;
 
+                    // se foi com som aciona a função que pronuncia o número na hora do moviento.
                     if (aluno.isComSom())
                         tocaSom(resultadoInformado);//Toast.makeText(this, "" + resultadoInformado, Toast.LENGTH_SHORT).show();
                 }

@@ -42,7 +42,7 @@ public class Ajuda extends AppCompatActivity {
             descricao1 = "Legal " + aluno.getNomeAluno() + ", agora você pode escolher a atividade que deseja praticar. " +
                     "São 3 atividades, a primeira é calcular composta pelas quatro operações de matemática básica, somar, subtrair, multiplicar e dividir. " +
                     "A segunda é uma atividade para você treinar a forma de contar.\n" +
-                    "Por último uma atividade aleatória que sorteia uma das anteriores e você receberá um desafio surpresa." +
+                    "Por último uma atividade desafio que sorteia uma das anteriores e você receberá um desafio surpresa." +
                     "Para responder as atividades você deve efetuar um semi-giro para um dos lados contando unidade ou um semi-giro para cima contando dezenas.\n" +
                     "Vamos lá?\n" +
                     "Para iniciar volte e escolha uma das atividades.\n";
