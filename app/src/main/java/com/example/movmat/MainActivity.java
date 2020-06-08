@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         //pegando a variável da tela
         digiteNome = (EditText) findViewById(R.id.digiteNome);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             alunoNovo = (Aluno) getIntent().getSerializableExtra("aluno");
@@ -57,22 +56,23 @@ public class MainActivity extends AppCompatActivity {
 
         //recebendo dados e executando a próxima tela
         botaoOk = (Button) findViewById(R.id.botaoOk);
-
         botaoOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 aluno.setNomeAluno(digiteNome.getText().toString());
-                if (!aluno.getNomeAluno().equals("Digite o nome")) {
+                if (aluno.getNomeAluno().equals("")) {
+                    Toast.makeText(MainActivity.this, "Por favor digite um nome válido.", Toast.LENGTH_SHORT).show();
+                } else if (aluno.getNomeAluno().equals("Digite o nome")) {
+                    Toast.makeText(MainActivity.this, "Por favor digite um nome válido.", Toast.LENGTH_SHORT).show();
+                } else {
                     Intent intent = new Intent(MainActivity.this, TelaConfiguracao.class);
                     intent.putExtra("aluno", aluno);
                     startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, "Por favor digite um nome válido.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void onBackPressed() {// Sair da aplicação se clicar em voltar
         finishAffinity();
