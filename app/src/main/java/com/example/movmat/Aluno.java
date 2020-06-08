@@ -1,7 +1,7 @@
 package com.example.movmat;
 
 import java.io.Serializable;
-
+//classe criada para manipular os dados referentes ao aluno
 public class Aluno implements Serializable {
     public String nomeAluno = "";
     public int vitoriasSoma = 0, vitoriasSubtracao = 0, vitoriasMultiplicacao = 0, vitoriasDivisao = 0, vitoriaContagem = 0;

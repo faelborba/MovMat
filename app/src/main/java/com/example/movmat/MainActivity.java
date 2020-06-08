@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //pegando a variável da tela
         digiteNome = (EditText) findViewById(R.id.digiteNome);
 
         Bundle extras = getIntent().getExtras();

@@ -43,7 +43,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_desafio);
 
-        //manter a tela ligada durante o desafio
+        //manter a tela ligada durante a atividade
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         //capturando itens da tela
@@ -63,6 +63,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             resultado.setTextColor(Color.BLACK);
         }
 
+        //gerando a atividade conforme escolha
         if (desafio.getDesafio() == 1) {
             resultadoCerto = geraSoma();
         } else if (desafio.getDesafio() == 2) {
@@ -71,14 +72,15 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
             resultadoCerto = geraMultiplicacao();
         } else if (desafio.getDesafio() == 4) {
             resultadoCerto = geraDivisao();
-        } else if (desafio.getDesafio() == 6) {//aqui gera o aleatorio
+        } else if (desafio.getDesafio() == 6) {//atividade desafio
             resultadoCerto = geraAleatorio();
-        } else if (desafio.getDesafio() == 5) {
+        } else if (desafio.getDesafio() == 5) {//atividade contar
             resultadoCerto = geraContagem();
         }
 
-        //capturando resultado com movimentos
+        //pegando os sensores disponíveis no aparelho
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        //armazenando apenas o sensor giroscopio
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE_UNCALIBRATED);
 
         //zerar resultado informado
@@ -106,6 +108,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         });
     }
 
+    //quando a opção de som ta acionada, executa um alerta na tela que faz o talkback ser acionado.
     protected void tocaSom(final int resultado) {
         new Thread() {
             public void run() {
@@ -114,6 +117,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
         }.run();
     }
 
+    //gerando as atividades
     public int geraContagem() {
         int valor = 0;
         Random random = new Random();
@@ -211,30 +215,34 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     @Override
     public void onSensorChanged(SensorEvent event) {
         synchronized (this) {
+            //cada evento de alteração nos eixos x e y são armazenados
             float x = event.values[0];
             float y = event.values[1];
 
+            //as variavaies atuais foram criadas para aumentar ou diminuir a sensibilidade
             atualX = (float) x;
             atualY = (float) y;
+
+            //adiciona as alterações em uma lista de float
             listaX.add(atualX);
             listaY.add(atualY);
 
             //tratando os valores do eixo x -- Dezenas
-            if (listaX.size() > 40) {
+            if (listaX.size() > 40) {// quando a lista chega a 40 esse if é acionado
                 listaX.remove(0);
                 for (Float f : listaX) {
                     if (Math.abs(atualX - f) > 9.0) {
-                        stepX++;
+                        stepX++;// quando acontece uma diferença de giro relevante conta um stepX
                     }
                 }
-                if (stepX > 4) {
+                if (stepX > 4) {//quando chega em quatro stepsX ele conta um Giro do Eixo X
                     stepsX = stepsX + 10; // contando eixo -- dezenas
-                    listaX = new ArrayList<>();
-                    vibrar();// vibrar
+                    listaX = new ArrayList<>();//esavasiando a listaX
+                    vibrar();// aciona a vibração do celular
 
-                    resultadoInformado = resultadoInformado +  stepsX + stepsY;
-                    resultado.setText(String.valueOf(resultadoInformado));
-                    stepsX = 0;
+                    resultadoInformado = resultadoInformado + stepsX + stepsY;//armazenando resultado total informado até agora
+                    resultado.setText(String.valueOf(resultadoInformado));//exibindo o resultado informado na tela
+                    stepsX = 0;//zerar eixos
                     stepsY = 0;
 
                     // se foi com som aciona a função que pronuncia o número na hora do moviento.
@@ -245,7 +253,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                 stepY = 0;// zerando o step y para evitar problema de movimento errado
             }
             //tratando os valores do eixo y -- unidades
-            if (listaY.size() > 40) {
+            if (listaY.size() > 40) {//quando chega em quatro stepsY ele conta um Giro do Eixo Y
                 listaY.remove(0);
                 for (Float f : listaY) {
                     if (Math.abs(atualY - f) > 9.0) {
@@ -257,8 +265,8 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
                     listaY = new ArrayList<>();
                     vibrar();
 
-                    resultadoInformado = resultadoInformado +  stepsX + stepsY;
-                    resultado.setText(String.valueOf(resultadoInformado));
+                    resultadoInformado = resultadoInformado + stepsX + stepsY;
+                    resultado.setText(String.valueOf(resultadoInformado));//exibindo o resultado informado na tela
                     stepsX = 0;
                     stepsY = 0;
 
@@ -293,7 +301,7 @@ public class TelaDesafio extends AppCompatActivity implements SensorEventListene
     private void vibrar()// cotrole de vibração
     {
         Vibrator rr = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long milliseconds = 60;//'30' é o tempo em milissegundos,duração da vibração.
+        long milliseconds = 60;//'60' é o tempo em milissegundos,duração da vibração.
         rr.vibrate(milliseconds);
     }
 }

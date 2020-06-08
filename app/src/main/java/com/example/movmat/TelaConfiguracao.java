@@ -25,7 +25,7 @@ public class TelaConfiguracao extends AppCompatActivity {
         botaoIstrucao = (Button) findViewById(R.id.botaoInstrucoes2);
         botaoOk = (Button) findViewById(R.id.botaoOk);
 
-        comSom.setChecked(true);
+        comSom.setChecked(true);// setando o check
         comVisual.setChecked(true);
 
         //recebendo dados

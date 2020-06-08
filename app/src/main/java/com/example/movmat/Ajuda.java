@@ -42,7 +42,7 @@ public class Ajuda extends AppCompatActivity {
             descricao1 = "Legal " + aluno.getNomeAluno() + ", agora você pode escolher a atividade que deseja praticar. " +
                     "São 3 atividades, a primeira é calcular composta pelas quatro operações de matemática básica, somar, subtrair, multiplicar e dividir. " +
                     "A segunda é uma atividade para você treinar a forma de contar.\n" +
-                    "Por último uma atividade desafio que sorteia uma das anteriores e você receberá um desafio surpresa." +
+                    "Por último uma atividade desafio que sorteia uma das anteriores e você receberá um desafio surpresa.\n" +
                     "Para responder as atividades você deve efetuar um semi-giro para um dos lados contando unidade ou um semi-giro para cima contando dezenas.\n" +
                     "Vamos lá?\n" +
                     "Para iniciar volte e escolha uma das atividades.\n";
@@ -52,6 +52,7 @@ public class Ajuda extends AppCompatActivity {
         texto.setText(String.valueOf(descricao1));
     }
 
+    //usando o botão voltar do android.
     public void onBackPressed() {
         Intent intent;
         // não chame o super desse método
@@ -67,7 +68,6 @@ public class Ajuda extends AppCompatActivity {
             intent = new Intent(this, SelecionaDesafio.class);
             intent.putExtra("aluno", aluno);
         }
-
         startActivity(intent);
         super.onBackPressed();
     }
