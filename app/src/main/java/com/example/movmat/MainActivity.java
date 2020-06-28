@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 aluno.setNomeAluno(digiteNome.getText().toString());
-                if (aluno.getNomeAluno().equals("")) {
+                if (aluno.getNomeAluno().equals("")) {// tratando nome
                     Toast.makeText(MainActivity.this, "Por favor digite um nome válido.", Toast.LENGTH_SHORT).show();
                 } else if (aluno.getNomeAluno().equals("Digite o nome")) {
                     Toast.makeText(MainActivity.this, "Por favor digite um nome válido.", Toast.LENGTH_SHORT).show();
