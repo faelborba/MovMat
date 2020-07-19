@@ -1,3 +1,8 @@
+/*
+Aplicativo MovMat
+Desenvolvido Por Rafael Borba dos Santos
+Classe inicial, Responsável por controlar a tela inicial
+*/
 package com.example.movmat;
 
 import androidx.annotation.RequiresApi;

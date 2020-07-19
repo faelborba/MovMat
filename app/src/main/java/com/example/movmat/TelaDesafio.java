@@ -1,3 +1,4 @@
+/*classe responsável por gerar as atividades e capturar os movimentos do giroscópio.*/
 package com.example.movmat;
 
 import androidx.appcompat.app.AppCompatActivity;
